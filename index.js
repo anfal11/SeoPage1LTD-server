@@ -25,6 +25,8 @@ async function run() {
 
     const filesCOllection = client.db("fileUpload").collection("files");
 
+    
+
 
 
 
@@ -43,9 +45,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("I am gonna upload files to mongodb!");
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`File uploader is running on the port: ${port}`);
 });
