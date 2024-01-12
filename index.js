@@ -28,6 +28,7 @@ async function run() {
     await client.connect();
 
     const filesCOllection = client.db("fileUpload").collection("files");
+    const dataCollection = client.db("fileUpload").collection("data");
 
     const storage = multer.diskStorage({
       destination: function(req, file, cb){
@@ -74,6 +75,11 @@ async function run() {
       const result = await filesCOllection.find({});
       const data = await result.toArray();
       res.send(data);
+    })
+
+    app.get("/download", async (req, res) => {
+        const result = await dataCollection.find({}).toArray();
+        res.send(result);
     })
 
 
